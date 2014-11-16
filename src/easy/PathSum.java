@@ -30,11 +30,11 @@ public class PathSum {
         }
         this.isPathFind = false;
         int path = 0;
-        go(root, path, sum);
+        preOrder(root, path, sum);
         return this.isPathFind;
     }
 
-    private void go(TreeNode node, int path, int sum) {
+    private void preOrder(TreeNode node, int path, final int sum) {
         if (this.isPathFind)
             return;
 
@@ -44,10 +44,10 @@ public class PathSum {
         }
 
         if (null != node.left)
-            go(node.left, path + node.val, sum);
+            preOrder(node.left, path + node.val, sum);
 
         if (null != node.right)
-            go(node.right, path + node.val, sum);
+            preOrder(node.right, path + node.val, sum);
     }
 }
 
