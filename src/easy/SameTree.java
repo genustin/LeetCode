@@ -2,6 +2,8 @@ package easy;
 
 /**
  * Created by Genustin on 11/19/14.
+ *
+ * Check whether two tree have same structure and value.
  */
 public class SameTree {
 
