@@ -14,7 +14,8 @@ public class RemoveElement {
         int j; // j should always be the last non-elem element, move elem after j
         for (i = 0, j = A.length - 1; i <= j; i++) {
             if (A[i] == elem) {
-                // find a non-elem from back
+                // find a non-elem from back for switch
+                // pay attention if j reach i
                 while (j >= i && A[j] == elem)
                     j--;
                 // A[j] is a non-elem, swap
