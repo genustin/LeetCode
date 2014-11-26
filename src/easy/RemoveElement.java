@@ -11,13 +11,13 @@ public class RemoveElement {
     public int removeElement(int[] A, int elem) {
         if (A.length == 0) return 0;
         int i; // there should have no elem before i
-        int j; // j should always be the last non-elem element
+        int j; // j should always be the last non-elem element, move elem after j
         for (i = 0, j = A.length - 1; i <= j; i++) {
             if (A[i] == elem) {
-                // find non-elem
+                // find a non-elem from back
                 while (j >= i && A[j] == elem)
                     j--;
-                // swap or not?
+                // A[j] is a non-elem, swap
                 if (i < j) {
                     swap(A, i, j);
                     j--;
