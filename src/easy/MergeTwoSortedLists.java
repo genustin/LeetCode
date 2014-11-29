@@ -5,19 +5,6 @@ package easy;
  */
 public class MergeTwoSortedLists {
 
-    /**
-     * Definition for singly-linked list.
-     */
-    private class ListNode {
-        private int val;
-        private ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
-
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // initialize
         ListNode ptr1 = l1;
@@ -26,7 +13,7 @@ public class MergeTwoSortedLists {
         ListNode node = root;
 
         // merge
-        while(null != ptr1 && null != ptr2) {
+        while (null != ptr1 && null != ptr2) {
             while (null != ptr1 && ptr1.val <= ptr2.val) {
                 node.next = ptr1;
                 node = node.next;
@@ -49,5 +36,18 @@ public class MergeTwoSortedLists {
 
         // skip the fake root
         return root.next;
+    }
+
+    /**
+     * Definition for singly-linked list.
+     */
+    private class ListNode {
+        private int      val;
+        private ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 }
