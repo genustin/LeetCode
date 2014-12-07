@@ -7,29 +7,37 @@ package easy;
  * from the end of list and return its head.
  * <p/>
  * Given n will always be valid.
+ * case 0: head is null
+ * case 1: remove the head
+ * case 2: remove the last
+ * case 3: normal remove
  */
 public class RemoveNthNodeFromEnd {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (null == head) return null;
-        if (null == head.next) return null;
+        // the flag mark whether the head is removed,
+        // if nthPrev moved, then set this flag to false.
+        boolean isHeadRemoved = true;
         ListNode ptr = head;
         // nthPrev.next should be nth node from the back.
-        ListNode nthPrev = head;
-        // nth node from the back should have (n - 1) away from the last node,
-        // so nthPrev should be (n - 2) away.
-        for (int i = 0; i < n - 2; i++) {
+        ListNode nthPrev = new ListNode(0);
+        nthPrev.next = ptr;
+        // nth node from the back should be (n - 1) away from the last node
+        for (int i = 0; i < n - 1; i++) {
             ptr = ptr.next;
         }
-
+        // move nthPrev
         while (null != ptr.next) {
             ptr = ptr.next;
             nthPrev = nthPrev.next;
+            isHeadRemoved = false;
         }
-        if (null != nthPrev.next)
-            nthPrev.next = nthPrev.next.next;
+
+        if (isHeadRemoved)
+            return head.next;
         else
-            nthPrev.next = null;
+            nthPrev.next = nthPrev.next.next;
         return head;
     }
 
@@ -38,7 +46,6 @@ public class RemoveNthNodeFromEnd {
         ListNode head = new ListNode(1);
         head.next = node;
         RemoveNthNodeFromEnd removeNode = new RemoveNthNodeFromEnd();
-        removeNode.removeNthFromEnd(head, 1);
-
+        removeNode.removeNthFromEnd(head, 2);
     }
 }
