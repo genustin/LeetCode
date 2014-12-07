@@ -8,17 +8,6 @@ package easy;
 
 public class SymmetricTree {
 
-    // Definition for binary tree
-    private class TreeNode {
-        private int      val;
-        private TreeNode left;
-        private TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public boolean isSymmetric(TreeNode root) {
         return null == root || isMirror(root.left, root.right);
     }

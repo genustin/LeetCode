@@ -11,20 +11,6 @@ package easy;
  * Given 1->1->2->3->3, return 1->2->3.
  */
 public class RemoveDuplicateFromSortedList {
-    /**
-     * Definition for singly-linked list.
-     */
-    private class ListNode {
-        private int      val;
-        private ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
-
-
     public ListNode deleteDuplicates(ListNode head) {
         if (null == head) return null;
 

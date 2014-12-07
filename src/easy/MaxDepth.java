@@ -6,17 +6,6 @@ package easy;
 public class MaxDepth {
     private int max;
 
-    // Definition for binary tree
-    private class TreeNode {
-        private int      val;
-        private TreeNode left;
-        private TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public int maxDepth(TreeNode root) {
         max = -1;
         if (null == root) return 0;

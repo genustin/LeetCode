@@ -7,17 +7,6 @@ package easy;
  */
 public class SameTree {
 
-    // Definition for binary tree
-    private class TreeNode {
-        private int      val;
-        private TreeNode left;
-        private TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if (null == p && null == q)
             return true;

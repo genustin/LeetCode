@@ -8,20 +8,6 @@ import java.util.Stack;
  * PostOrder, non-recursion
  */
 public class PathSumNR {
-
-    /**
-     * Definition for binary tree
-     */
-    private class TreeNode {
-        private int      val;
-        private TreeNode left;
-        private TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     /**
      * Binary tree and a visit flag
      */

@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * Created by Genustin on 11/30/14.
+ * Created by Genustin on 12/07/14.
  * <p/>
  * Given a binary tree, return the level order traversal of its nodes' values.
  * (ie, from left to right, level by level).
- * Return its top-bottom level order traversal
+ * Return its bottom-up level order traversal.
  * <p/>
  * case 1: root == null, return an empty list. ie, []
  */
-public class BinaryTreeLevelOrderTraversal {
+public class BinaryTreeLevelOrderTraversalII {
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> levels = new ArrayList<List<Integer>>();
         // setup two queues to handle this level and next level
         // if aqueue is not empty, visit each element, put children to bqueue,
@@ -27,9 +27,9 @@ public class BinaryTreeLevelOrderTraversal {
         if (null != root) aqueue.add(root);
         while (!aqueue.isEmpty() || !bqueue.isEmpty()) {
             if (!aqueue.isEmpty())
-                levels.add(visit(aqueue, bqueue));
+                levels.add(0, visit(aqueue, bqueue));
             else
-                levels.add(visit(bqueue, aqueue));
+                levels.add(0, visit(bqueue, aqueue));
         }
         return levels;
     }

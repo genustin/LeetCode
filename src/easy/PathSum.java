@@ -11,19 +11,6 @@ public class PathSum {
     // flag
     private boolean isPathFind;
 
-    /**
-     * Definition for binary tree
-     */
-    private class TreeNode {
-        private int      val;
-        private TreeNode left;
-        private TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public boolean hasPathSum(TreeNode root, int sum) {
         if (null == root) {
             return false;

@@ -38,16 +38,4 @@ public class MergeTwoSortedLists {
         return root.next;
     }
 
-    /**
-     * Definition for singly-linked list.
-     */
-    private class ListNode {
-        private int      val;
-        private ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 }

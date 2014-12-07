@@ -6,17 +6,6 @@ package easy;
 public class MinDepth {
     private int min;
 
-    // Definition for binary tree
-    private class TreeNode {
-        private int      val;
-        private TreeNode left;
-        private TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public int minDepth(TreeNode root) {
         if (null == root) return 0;
         this.min = -1;
