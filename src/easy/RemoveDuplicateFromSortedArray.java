@@ -3,9 +3,11 @@ package easy;
 /**
  * Created by Genustin on 11/29/14.
  * <p/>
- * Given a sorted array, remove the duplicates in place such that each element
- * appear only once and return the new length.
- * Do not allocate extra space for another array, you must do this in place with constant memory.
+ * Given a sorted array, remove the duplicates in place
+ * such that each element appear only once and return the new length.
+ * <p/>
+ * Do not allocate extra space for another array,
+ * you must do this in place with constant memory.
  * <p/>
  * For example,
  * Given input array A = [1,1,2],

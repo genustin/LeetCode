@@ -34,7 +34,7 @@ public class ClimbingStaires {
     }
 
     /*
-     * This is too slow
+     * below method is very slow
      */
     public int climbStairs2(int n) {
         if (n < 3)
@@ -77,7 +77,6 @@ public class ClimbingStaires {
 
     public static void main(String[] args) {
         System.out.println(new ClimbingStaires().climbStairs(40));
-
         System.out.println(new ClimbingStaires().climbStairs2(1));
         System.out.println(new ClimbingStaires().climbStairs2(2));
         System.out.println(new ClimbingStaires().climbStairs2(3));

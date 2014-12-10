@@ -11,18 +11,20 @@ package easy;
 public class ReverseInteger {
     public int reverse(int x) {
         long temp = 0;
-
-        while (x != 0) {
-            temp = temp * 10 + x % 10;
-            x /= 10;
-            if (temp >= Integer.MAX_VALUE || temp <= Integer.MIN_VALUE)
-                return 0;
+        long div = 10;
+        if (x < 10 && x > -10) return x;
+        while (x / div != 0) {
+            temp = temp * 10 + (x % div) / (div / 10);
+            div *= 10;
         }
+        temp = temp * 10 + (x % div) / (div / 10);
+        if (temp >= Integer.MAX_VALUE || temp <= Integer.MIN_VALUE)
+            return 0;
 
         return (int) temp;
     }
 
     public static void main(String[] args) {
-        System.out.println(new ReverseInteger().reverse(-2147483648));
+        System.out.println(new ReverseInteger().reverse(9));
     }
 }

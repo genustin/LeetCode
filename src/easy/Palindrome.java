@@ -7,20 +7,17 @@ public class Palindrome {
     public boolean isPalindrome(String s) {
         if (s.isEmpty())
             return true;
-        s = s.toLowerCase();
+        String l = s.toLowerCase();
         int i = 0;
-        int j = s.length() - 1;
+        int j = l.length() - 1;
         while (i < j) {
-            if (!(Character.isLetterOrDigit(s.charAt(i)))) {
+            if (!(Character.isLetterOrDigit(l.charAt(i)))) {
                 i++;
-                continue;
-            } else if (!(Character.isLetterOrDigit(s.charAt(j)))) {
+            } else if (!(Character.isLetterOrDigit(l.charAt(j)))) {
                 j--;
-                continue;
-            } else if (s.charAt(i) == s.charAt(j)) {
+            } else if (l.charAt(i) == l.charAt(j)) {
                 i++;
                 j--;
-                continue;
             } else {
                 return false;
             }

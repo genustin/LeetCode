@@ -12,7 +12,7 @@ package easy;
 public class PlusOne {
     public int[] plusOne(int[] digits) {
         int[] result = new int[digits.length];
-        int sum = 0;
+        int sum;
         int addend = 1;
         for (int i = digits.length - 1; i >= 0; i--) {
             sum = digits[i] + addend;
