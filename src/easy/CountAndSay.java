@@ -1,5 +1,7 @@
 package easy;
 
+import java.util.ArrayList;
+
 /**
  * Created by Genustin on 12/21/14.
  * <p/>
@@ -15,29 +17,26 @@ package easy;
 public class CountAndSay {
     public String countAndSay(int n) {
         String say = "1";
+        String temp;
         for (int k = 1; k < n; k++) {
-            say = count(say);
+            temp = "";
+            int i = 0;
+            while (i < say.length()) {
+                char ptr = say.charAt(i);
+                int num = 0;
+                while (i < say.length() && say.charAt(i) == ptr) {
+                    i++;
+                    num++;
+                }
+                temp = temp.concat(String.valueOf(num)).concat(String.valueOf(ptr));
+            }
+            say = temp;
         }
         return say;
     }
 
-    private String count(String str) {
-        String out = "";
-        int k = 0;
-        while (k < str.length()) {
-            char ptr = str.charAt(k);
-            int num = 0;
-            while (k < str.length() && str.charAt(k) == ptr) {
-                k++;
-                num++;
-            }
-            out = out.concat(String.valueOf(num)).concat(String.valueOf(ptr));
-        }
-        return out;
-    }
-
     public static void main(String[] args) {
         CountAndSay cs = new CountAndSay();
-        System.out.println(cs.countAndSay(10));
+        System.out.println(cs.countAndSay(20));
     }
 }
