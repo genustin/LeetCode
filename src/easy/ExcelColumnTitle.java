@@ -5,31 +5,38 @@ package easy;
  * <p/>
  * Given a positive integer, return its corresponding column title
  * as appear in an Excel sheet
+ *  1 -> A
+ *  2 -> B
+ *  3 -> C
+ *  ...
+ *  26 -> Z
+ *  27 -> AA
+ *  28 -> AB
  */
 public class ExcelColumnTitle {
+    // think in the way of transfer decimal to hexadecimal
+    // the difference is excel column starts from 1, not 0.
     public String convertToTitle(int n) {
         if (n == 0) return "";
-        String MAP = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
+        String MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int size = MAP.length();
-        int num = n;
+        // pre calculate the length
         long div = 0;
         long mul = 1;
         int len = 0;
-        while (num > div) {
+        while (n > div) {
             len++;
             mul = mul * size;
             div = mul + div;
         }
 
+        // I make it starts from 0, easier to calculate.
+        int num = n - 1;
         char[] output = new char[len];
-        int reminder = 0;
         for (int i = len - 1; i >= 0; i--) {
-            reminder = num % size;
-            output[i] = MAP.charAt(reminder);
-            if (reminder == 0)
-                num = (num - size) / size;
-            else
-                num = (num - num % size) / size;
+            output[i] = MAP.charAt(num % size);
+            // make it starts from 0
+            num = num / size - 1;
         }
         return String.valueOf(output);
     }
@@ -46,7 +53,8 @@ public class ExcelColumnTitle {
         System.out.println(ect.convertToTitle(27));
         System.out.println(ect.convertToTitle(52));
         System.out.println(ect.convertToTitle(53));
-        System.out.println(ect.convertToTitle(55));
+        System.out.println(ect.convertToTitle(701));
+        System.out.println(ect.convertToTitle(702));
         System.out.println(ect.convertToTitle(1000000001));
     }
 }
