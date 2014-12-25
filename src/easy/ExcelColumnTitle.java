@@ -15,7 +15,8 @@ package easy;
  */
 public class ExcelColumnTitle {
     // think in the way of transfer decimal to hexadecimal
-    // the difference is excel column starts from 1, not 0.
+    // the key difference is excel column starts from 1, not 0.
+    // so I would use n-1 to do the transfer, as it would start from 0.
     public String convertToTitle(int n) {
         if (n == 0) return "";
         String MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -30,12 +31,12 @@ public class ExcelColumnTitle {
             div = mul + div;
         }
 
-        // I make it starts from 0, easier to calculate.
+        // I make the mapping starts from 0, easier to calculate.
         int num = n - 1;
         char[] output = new char[len];
         for (int i = len - 1; i >= 0; i--) {
             output[i] = MAP.charAt(num % size);
-            // make it starts from 0
+            // make the mapping starts from 0
             num = num / size - 1;
         }
         return String.valueOf(output);
