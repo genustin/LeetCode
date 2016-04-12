@@ -1,20 +1,13 @@
 package hard;
 
+import common.RandomListNode;
+
 /**
  * Created by wayne on 16/4/12.
  * A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
  * <p>
  * Return a deep copy of the list.
  */
-
-class RandomListNode {
-    int label;
-    RandomListNode next, random;
-
-    RandomListNode(int x) {
-        this.label = x;
-    }
-}
 
 public class CopyListWIthRandomPtr {
     /**

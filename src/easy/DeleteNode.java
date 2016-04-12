@@ -1,5 +1,6 @@
 package easy;
 
+import common.ListNode;
 /**
  * Created by Genustin on 4/10/16.
  * <p>
@@ -9,14 +10,6 @@ package easy;
  * the linked list should become 1 -> 2 -> 4 after calling your function.
  */
 public class DeleteNode {
-    class ListNode {
-        int      val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public void deleteNode(ListNode node) {
         if (node.next != null) {

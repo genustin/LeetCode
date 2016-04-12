@@ -1,5 +1,7 @@
 package easy;
 
+import common.ListNode;
+
 /**
  * Created by Genustin on 11/25/2014.
  */

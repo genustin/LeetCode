@@ -1,5 +1,7 @@
 package easy;
 
+import common.ListNode;
+
 /**
  * Created by Genustin on 12/21/14.
  * find the node at which the intersection of two singly linked lists begins,
