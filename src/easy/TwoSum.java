@@ -1,6 +1,10 @@
 package easy;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.Arrays;
 
 /**
  * Created by wayne on 16/4/12.
