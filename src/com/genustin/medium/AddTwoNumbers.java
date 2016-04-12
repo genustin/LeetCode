@@ -17,22 +17,26 @@ public class AddTwoNumbers {
         int carry = 0;
         ListNode head = new ListNode(0);
         ListNode tail = head;
-        while (l1 != null && l2 != null) {
-            int val = l1.val + l2.val + carry;
-            ListNode newNode = new ListNode(val % 10);
+        ListNode node1 = l1, node2 = l2, newNode;
+        while (node1 != null && node2 != null) {
+            int val = node1.val + node2.val + carry;
+            newNode = new ListNode(val % 10);
             tail.next = newNode;
             tail = tail.next;
             // next loop
             carry = val / 10;
-            l1 = l1.next;
-            l2 = l2.next;
+            node1 = node1.next;
+            node2 = node2.next;
         }
 
         // clean list
-        ListNode node = l1 != null ? l1 : l2;
+        ListNode node;
+        if (node1 != null) node = node1;
+        else node = node2;
+
         while (node != null) {
             int val = node.val + carry;
-            ListNode newNode = new ListNode(val % 10);
+            newNode = new ListNode(val % 10);
             tail.next = newNode;
             tail = tail.next;
             // next loop
@@ -42,7 +46,7 @@ public class AddTwoNumbers {
 
         // clean carry
         while (carry != 0) {
-            ListNode newNode = new ListNode(carry % 10);
+            newNode = new ListNode(carry % 10);
             tail.next = newNode;
             carry = carry / 10;
         }
