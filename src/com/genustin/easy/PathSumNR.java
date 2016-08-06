@@ -1,10 +1,11 @@
 package com.genustin.easy;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * Created by Genustin on 11/15/14.
- *
+ * <p>
  * PostOrder, non-recursion
  */
 public class PathSumNR {
@@ -17,11 +18,11 @@ public class PathSumNR {
     }
 
     public boolean hasPathSum(TreeNode root, int sum) {
-        Stack<TreeNodeVisit> stack = new Stack<TreeNodeVisit>();
+        Deque<TreeNodeVisit> stack = new LinkedList<TreeNodeVisit>();
         int pathSum = 0;
         TreeNodeVisit nodeVisit;
         TreeNode node = root;
-        while (null != node || !stack.empty()) {
+        while (null != node || !stack.isEmpty()) {
             while (null != node) {
                 nodeVisit = new TreeNodeVisit();
                 nodeVisit.node = node;
@@ -31,7 +32,7 @@ public class PathSumNR {
                 node = node.left;
             }
 
-            if (!stack.empty()) {
+            if (!stack.isEmpty()) {
                 nodeVisit = stack.pop();
                 node = nodeVisit.node;
                 // leaf
