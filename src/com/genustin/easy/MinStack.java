@@ -1,7 +1,8 @@
 package com.genustin.easy;
 
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * Created by Genustin on 11/12/14.
@@ -9,11 +10,11 @@ import java.util.Stack;
  * and retrieving the minimum element in constant time.
  */
 public class MinStack {
-    private Stack<Integer> stack = new Stack<Integer>();
-    private Stack<Integer> min   = new Stack<Integer>();
+    private Deque<Integer> stack = new LinkedList<Integer>();
+    private Deque<Integer> min   = new LinkedList<Integer>();
 
     public void push(int x) {
-        if (min.empty() || x <= min.peek()) {
+        if (min.isEmpty() || x <= min.peek()) {
             min.push(x);
         }
         stack.push(x);
