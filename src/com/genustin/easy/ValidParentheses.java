@@ -1,6 +1,7 @@
 package com.genustin.easy;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * Created by Genustin on 12/10/14.
@@ -14,7 +15,7 @@ import java.util.Stack;
  */
 public class ValidParentheses {
     public boolean isValid(String s) {
-        Stack<Character> leftParen = new Stack<Character>();
+        Deque<Character> leftParen = new LinkedList<>();
         for (int i = 0; i < s.length(); i++) {
             char item = s.charAt(i);
             switch (item) {
@@ -27,14 +28,14 @@ public class ValidParentheses {
                 case ']':
                 case '}':
                     // no left items?
-                    if (leftParen.empty())
+                    if (leftParen.isEmpty())
                         return false;
                     if (!equal(leftParen.pop(), item))
                         return false;
             }
         }
         // if stack is clean, then it's good.
-        return leftParen.empty();
+        return leftParen.isEmpty();
     }
 
     private boolean equal(char pop, char item) {

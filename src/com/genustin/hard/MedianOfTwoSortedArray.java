@@ -11,10 +11,10 @@ public class MedianOfTwoSortedArray {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;
-        int len = m + n;
+        int len = (m + n) / 2 + 1;
         int[] nums = new int[len];
         int i = 0, j = 0, k = 0;
-        while (i < m && j < n) {
+        while (k < len && i < m && j < n) {
             if (nums1[i] <= nums2[j]) {
                 nums[k++] = nums1[i++];
             } else {
@@ -23,25 +23,25 @@ public class MedianOfTwoSortedArray {
         }
 
         if (i >= m) {
-            while (j < n) {
+            while (k < len) {
                 nums[k++] = nums2[j++];
             }
         } else if (j >= n) {
-            while (i < m) {
+            while (k < len) {
                 nums[k++] = nums1[i++];
             }
         }
 
-        if (len % 2 == 0) {
-            return (nums[len / 2 - 1] + nums[len / 2]) / 2.0;
+        if ((m + n) % 2 == 0) {
+            return (nums[len - 2] + nums[len - 1]) / 2.0;
         } else {
-            return nums[(len) / 2];
+            return nums[len - 1];
         }
     }
 
     public static void main(String[] args) {
         int[] nums1 = {};
-        int[] nums2 = {2, 3};
+        int[] nums2 = {1, 2, 3, 4};
         MedianOfTwoSortedArray medianOfTwoSortedArray = new MedianOfTwoSortedArray();
         System.out.println(medianOfTwoSortedArray.findMedianSortedArrays(nums1, nums2));
     }

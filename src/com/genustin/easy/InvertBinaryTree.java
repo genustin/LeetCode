@@ -1,6 +1,7 @@
 package com.genustin.easy;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * Created by wayne on 16/2/29.
@@ -31,12 +32,12 @@ public class InvertBinaryTree {
 
     // this take 2 ms in leetcode, why this slower?
     public TreeNode invertTree2(TreeNode root) {
-        Stack<TreeNode> st = new Stack<TreeNode>();
+        Deque<TreeNode> st = new LinkedList<TreeNode>();
         TreeNode cur;
         TreeNode pre = null;
 
         st.push(root);
-        while (!st.empty() && st.peek() != null) {
+        while (!st.isEmpty() && st.peek() != null) {
             cur = st.peek();
             if ((cur.left == null && cur.right == null)
                     || (pre != null && (pre == cur.left || pre == cur.right))) {
