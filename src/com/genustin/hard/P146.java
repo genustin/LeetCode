@@ -27,27 +27,24 @@ public class P146 {
   }
 }
 
-/* TODO: 2017/7/21 performance is too bad, don't relay on the java collection */
 class LRUCache {
 
   private int                     count;
   private int                     capacity;
   private Map<Integer, DLinkNode> cache;
-  private LinkedList<DLinkNode>   list;
+  private DLinkNode head, tail;
 
   LRUCache(int capacity) {
     this.cache = new HashMap();
-    this.list = new LinkedList<>();
     this.capacity = capacity;
     this.count = 0;
   }
 
   public int get(int key) {
-    if (cache.containsKey(key)) {
-      DLinkNode node = cache.get(key);
-      refreshCache(node);
-      System.out.println(node.val);
-      return node.val;
+    if (this.cache.containsKey(key)) {
+      System.out.println(this.cache.get(key).val);
+      return this.cache.get(key).val;
+
     } else {
       System.out.println(-1);
       return -1;
@@ -56,25 +53,52 @@ class LRUCache {
 
   public void put(int key, int value) {
     if (cache.containsKey(key)) {
-      DLinkNode old = cache.get(key);
-      old.val = value;
-      refreshCache(old);
-      return;
-    }
-    DLinkNode node = new DLinkNode(key, value);
-    this.cache.put(key, node);
-    this.list.addFirst(node);
-    this.count++;
-    if (this.count > this.capacity) {
-      DLinkNode toDel = list.removeLast();
-      this.cache.remove(toDel.key);
-      this.count--;
+      DLinkNode node = cache.get(key);
+      node.val = value;
+      moveToHead(node);
+    } else {
+      DLinkNode newNode = new DLinkNode(key, value);
+      if (count >= capacity) {
+        addToHead(newNode);
+        removeNode(tail);
+      } else {
+        addToHead(newNode);
+      }
     }
   }
 
-  private void refreshCache(DLinkNode node) {
-    this.list.remove(node);
-    this.list.addFirst(node);
+  // move a list node to the head, mark it as the newest
+  private void moveToHead(DLinkNode node) {
+    removeNode(node);
+    addToHead(node);
+  }
+
+  private void addToHead(DLinkNode node) {
+    if (head == null) {
+      head = node;
+    }
+
+    if (tail == null) {
+      tail = node;
+    }
+
+    if (!node.equals(head)) {
+      node.next = head;
+      node.pre = null;
+      head.pre = node;
+      head = node;
+      ++count;
+    }
+    cache.put(node.key, node);
+  }
+
+  private void removeNode(DLinkNode node) {
+    if (!node.equals(head))
+      node.pre.next = node.next;
+    if (!node.equals(tail))
+      node.next.pre = node.pre;
+
+    --count;
   }
 }
 
