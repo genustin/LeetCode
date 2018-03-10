@@ -25,11 +25,12 @@ class LFUCache {
   private Map<Integer, Integer>    kvCache;
   // keep the key-node mapping, the node contains a LinkedHashSet, indicate the visit queue, head is the oldest
   private Map<Integer, DLinkNode2> ksCache;
-  // keep the node list, indicate frequence queue, head is least frequence
+  // keep the node list, indicate frequency queue, head is least frequency
   private DLinkNode2               head, tail;
 
   LFUCache(int capacity) {
     this.count = 0;
+    Math.abs(count);
     this.capacity = capacity;
     this.kvCache = new HashMap<>();
     this.ksCache = new HashMap<>();
